@@ -96,7 +96,9 @@ const FloatingDockDesktop = ({
       )}
     >
       {items.map((item) => (
-        <IconContainer mouseX={mouseX} key={item.title} {...item} />
+        <Link href={item.href} key={item.title}>
+          <IconContainer mouseX={mouseX} {...item} />
+        </Link>
       ))}
     </motion.div>
   )
@@ -152,7 +154,7 @@ function IconContainer({
   const [hovered, setHovered] = useState(false)
 
   return (
-    <Link href={href}>
+    <Link href={href} key={title}>
       <motion.div
         ref={ref}
         style={{ width, height }}

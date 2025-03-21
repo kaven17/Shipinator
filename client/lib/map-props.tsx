@@ -9,6 +9,7 @@ import {
   } from "@tabler/icons-react";
 import Image from "next/image";
 import { Box, Lock, Search, Settings, Sparkles } from "lucide-react"
+import { User, Home, Package, Truck,Activity,FileText } from 'lucide-react';
 
 export interface GridItemProps {
   area: string
@@ -52,54 +53,43 @@ export const worldMapDots: MapProps["dots"] = [
     },
   ];
   
-  export const links = [
-    {
-      title: "Home",
-      icon: <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
-      href: "#",
-    },
-    {
-      title: "Products",
-      icon: <IconTerminal2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
-      href: "#",
-    },
-    {
-      title: "Components",
-      icon: <IconNewSection className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
-      href: "#",
-    },
-    {
-      title: "Aceternity UI",
-      icon: (
-        <Image 
-          src="https://assets.aceternity.com/logo-dark.png" 
-          width={20} 
-          height={20} 
-          alt="Aceternity Logo" 
-        />
-      ),
-      href: "#",
-    },
-    {
-      title: "Changelog",
-      icon: <IconExchange className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
-      href: "#",
-    },
-    {
-      title: "Twitter",
-      icon: <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
-      href: "#",
-    },
-    {
-      title: "GitHub",
-      icon: <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
-      href: "#",
-    },
-  ];
+export interface LinkProps {
+  title: string;
+  icon: React.ReactNode;
+  href: string;
+  path: string;
+}
+
+export const links: LinkProps[] = [
+  {
+    title: "Home",
+    icon: <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
+    href: "/home",
+    path: "/home",
+  },
+  {
+    title: "Medicine",
+    icon: <Package className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
+    href: "/medicine",
+    path: "/medicine",
+  },
+  {
+    title: "Dashboard",
+    icon: <Activity className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
+    href: "/dashboard",
+    path: "/dashboard",
+  },
+  {
+    title: "Receiver",
+    icon: <FileText className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
+    href: "/receiver",
+    path: "/receiver",
+  },
+];
   export const gridItems: GridItemProps[] = [
     {
       area: "md:[grid-area:1/1/2/7] xl:[grid-area:1/1/2/5]",
-      icon: <Box className="h-4 w-4 text-black dark:text-neutral-400" />,
+      icon: <Box className="h-4 w-4 text-black dark:white" />,
       title: "Do things the right way",
       description: "Running out of copy so I'll write anything."
     },

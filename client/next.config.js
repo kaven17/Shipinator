@@ -3,9 +3,7 @@ const nextConfig = {
   output: 'export',
   eslint: { ignoreDuringBuilds: true },
   images: { unoptimized: true },
-  experimental: {
-    swcMinify: true, // Forces Next.js to use SWC for minification
-  },
+  experimental: {}, // Can be removed if not needed
 };
 
 module.exports = nextConfig;

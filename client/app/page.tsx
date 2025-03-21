@@ -472,12 +472,12 @@ export default function ShipmentDetails() {
               <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} />
               <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border p-6 shadow-md md:p-6">
                 <div className="relative flex flex-1 flex-col justify-between gap-3">
-                  <div className="w-fit rounded-lg border border-gray-600 p-2">{item.icon}</div>
+                  <div className="w-fit rounded-lg border border-white p-2">{item.icon}</div>
                   <div className="space-y-3">
                     <h3 className="pt-0.5 text-xl font-semibold font-sans">
                       {item.title}
                     </h3>
-                    <h2 className="text-sm md:text-base text-gray-600 dark:text-gray-400">
+                    <h2 className="text-sm md:text-base text-white dark:text-white">
                       {item.description}
                     </h2>
                   </div>
@@ -489,4 +489,4 @@ export default function ShipmentDetails() {
       </ul>
     </div>
   );
-}
+} 
