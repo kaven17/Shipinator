@@ -29,7 +29,7 @@ import { Separator } from '@/components/ui/separator';
 import { useToast } from '@/components/ui/use-toast';
 import { getDatabase, ref, get } from 'firebase/database';
 import { auth, signInWithGoogle } from '@/lib/firebase';
-import { getWalletAddress, isWalletConnected, connectWallet } from '@/lib/web3';
+import { getWalletAddress, connectWallet } from '@/lib/web3';
 
 // Define the Shipment interface
 interface Shipment {
@@ -66,9 +66,15 @@ export default function ReceiverPage() {
   useEffect(() => {
     const checkWalletConnection = async () => {
       try {
-        if (isWalletConnected()) {
-          const address = await getWalletAddress();
-          setWalletAddress(address);
+        // First make sure we're in a browser environment with ethereum
+        if (typeof window === 'undefined' || !window.ethereum) return;
+        
+        // Check if MetaMask is connected by requesting accounts
+        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+        
+        // If we have accounts, we're connected
+        if (accounts && accounts.length > 0) {
+          setWalletAddress(accounts[0]);
           setIsWeb3Connected(true);
         }
       } catch (error) {
@@ -101,6 +107,10 @@ export default function ReceiverPage() {
 
   // Function to handle wallet connection
   const handleConnectWallet = async () => {
+    // If already connected, don't try again
+    if (isWeb3Connected) return;
+    
+    setIsLoading(true);
     try {
       await connectWallet();
       const address = await getWalletAddress();
@@ -111,11 +121,36 @@ export default function ReceiverPage() {
         description: "Your wallet has been successfully connected",
       });
     } catch (error) {
+      console.error("Wallet connection error:", error);
+      // Provide more specific error messages based on the error
+      let errorMessage = "Please make sure MetaMask is installed and unlocked";
+      
+      if (error instanceof Error) {
+        // If it's a "MetaMask is locked" error
+        if (error.message.includes("unlock") || error.message.includes("locked")) {
+          errorMessage = "Your MetaMask wallet is locked. Please unlock it and try again.";
+        } 
+        // If it's a "User rejected request" error
+        else if (error.message.includes("User rejected") || error.message.includes("user rejected")) {
+          errorMessage = "You declined the connection request. Please approve it to connect your wallet.";
+        }
+        // If it's our custom timeout error
+        else if (error.message.includes("taking too long")) {
+          errorMessage = "Connection attempt timed out. Please try again in a moment.";
+        }
+        // Otherwise use the actual error message
+        else {
+          errorMessage = error.message;
+        }
+      }
+      
       toast({
         title: "Wallet connection failed",
-        description: error instanceof Error ? error.message : "Please make sure MetaMask is installed and unlocked",
+        description: errorMessage,
         variant: "destructive",
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -252,8 +287,16 @@ export default function ReceiverPage() {
                   variant="outline" 
                   className="w-full"
                   onClick={handleConnectWallet}
+                  disabled={isLoading}
                 >
-                  Connect Wallet
+                  {isLoading ? (
+                    <>
+                      <div className="animate-spin mr-2 h-4 w-4 border-2 border-current border-t-transparent rounded-full"></div>
+                      Connecting...
+                    </>
+                  ) : (
+                    "Connect Wallet"
+                  )}
                 </Button>
               ) : (
                 <div className="flex items-center bg-green-50 text-green-700 p-2 rounded">

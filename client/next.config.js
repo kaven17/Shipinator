@@ -1,9 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  output: "export",
   eslint: { ignoreDuringBuilds: true },
   images: { unoptimized: true },
-  experimental: {}, // Can be removed if not needed
+  experimental: {
+    optimizePackageImports: [],  // Disable barrel optimization
+  },
 };
 
 module.exports = nextConfig;
