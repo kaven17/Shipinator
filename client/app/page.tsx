@@ -1,4 +1,8 @@
+
+
 "use client";
+
+import axios from "axios";
 
 import { useState, useEffect, useMemo } from 'react';
 import { useStorageUpload } from "@thirdweb-dev/react";
@@ -21,6 +25,7 @@ import { worldMapDots } from "../lib/map-props"
 
 // Lazy load the WorldMap component
 const WorldMap = lazy(() => import("@/components/ui/world-map"));
+
 
 // Separate LoginModal into a dedicated component to prevent re-renders
 const LoginModal = ({ 
@@ -217,6 +222,10 @@ export default function ShipmentDetails() {
         title: "Success",
         description: "Shipment created successfully",
       });
+
+      const firebaseURL = "https://blockship-16599-default-rtdb.firebaseio.com/shipments.json";
+
+    await axios.post(firebaseURL, shipmentData);
 
       // Reset form
       setFormData({
