@@ -441,10 +441,10 @@ export default function ShipmentDetails() {
       {gridItems.slice(0, 6).map((item, index) => (
         <li key={index} className={`min-h-[14rem] list-none ${item.area}`}>
           <div className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3">
-            <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} />
+            <GlowingEffect spread={40} glow={true} disabled={false} proximity={75} inactiveZone={0.01} />
             <div className="relative flex h-full flex-col flex-2 justify-between gap-6 overflow-hidden rounded-xl border p-6 shadow-md md:p-6">
               <div className="relative flex flex-2 flex-col justify-between gap-3">
-                <div className="w-fit rounded-lg border border-white p-2">{item.icon}</div>
+                <div className="w-fit rounded-lg border border-black p-2">{item.icon}</div>
                 <div className="space-y-3">
                   <h3 className="pt-0.5 text-xl font-semibold font-sans">
                     {item.title}
