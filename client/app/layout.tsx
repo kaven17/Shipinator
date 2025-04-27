@@ -6,9 +6,9 @@ import ClientProvider from "./providers";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import { links } from "../lib/map-props";
 import { useRouter } from "next/navigation";
-import { ThirdwebProvider } from "@thirdweb-dev/react";
 import React, { useEffect, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 
 const inter = Inter({ subsets: ["latin"] });
 const queryClient = new QueryClient(); // ✅ React Query Client
@@ -37,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <body className={inter.className}>
       <QueryClientProvider client={queryClient}>
         <ClientProvider>
+          
           {children}
           {/* Only render FloatingDock after client mounts to avoid SSR mismatches */}
           {clientReady && (

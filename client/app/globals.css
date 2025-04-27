@@ -6,6 +6,50 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --blur: 0;
+  --spread: 20;
+  --start: 0;
+  --active: 0;
+  --glowingeffect-border-width: 1px;
+  --repeating-conic-gradient-times: 5;
+}
+.glowing-effect {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 100;
+  transition: opacity 0.3s;
+}
+
+.glowing-effect.active {
+  opacity: 1;
+}
+
+.glowing-effect.inactive {
+  opacity: 0;
+}
+
+.glowing-effect.blur {
+  filter: blur(var(--blur));
+}
+
+.glowing-effect.border-white {
+  border: 1px solid white;
+}
+
+.glowing-effect.gradient {
+  background: var(--gradient);
+  background-attachment: fixed;
+}
+
+.glowing-effect::after {
+  content: '';
+  position: absolute;
+  inset: calc(-1 * var(--glowingeffect-border-width));
+  border: var(--glowingeffect-border-width) solid transparent;
+  background: var(--gradient);
+  opacity: var(--active);
+  transition: opacity 0.3s;
 }
 
 @media (prefers-color-scheme: dark) {

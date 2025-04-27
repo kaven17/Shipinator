@@ -40,7 +40,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
     "hardhat": "^2.22.19",
-    "hardhat-deploy": "^0.14.0",
+    "hardhat-deploy": "^0.14.1",
     "hardhat-gas-reporter": "^1.0.10",
     "next": "^15.2.2",
     "postcss": "^8",

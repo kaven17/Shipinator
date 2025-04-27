@@ -1,8 +1,6 @@
 "use client";
 
 import { ThirdwebProvider } from "@thirdweb-dev/react";
-import Navigation from '@/components/Navigation'
-
 export default function ClientProvider({
   children,
 }: {
@@ -13,7 +11,7 @@ export default function ClientProvider({
       activeChain="sepolia"
       clientId="940026e7cd17bcf8164a76f125464069"
     >
-      <Navigation />
+      
       <main className="container mx-auto px-4 py-8">
         {children}
       </main>

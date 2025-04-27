@@ -1,16 +1,19 @@
-const hre = require("hardhat");
+const { ethers } = require("hardhat");
 
 async function main() {
-    const Shipping = await hre.ethers.getContractFactory("ShippingNFT"); // Ensure correct contract name
-    const shipping = await Shipping.deploy();
+  const [deployer] = await ethers.getSigners();
 
-    await shipping.deployed();
-    console.log(`ShippingNFT deployed to: ${shipping.address}`);
+  console.log("🚀 Deploying contract with the account:", deployer.address);
+
+  const ShippingNFT = await ethers.getContractFactory("ShippingNFT");
+  const contract = await ShippingNFT.deploy();
+
+  console.log("✅ Contract deployed to:", contract.address);
 }
 
 main()
-    .then(() => process.exit(0))
-    .catch((error) => {
-        console.error(error);
-        process.exit(1);
-    });
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error("❌ Deployment failed:", error);
+    process.exit(1);
+  });

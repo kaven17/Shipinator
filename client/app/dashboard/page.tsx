@@ -12,7 +12,7 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 import { auth } from '@/lib/firebase';
-import { isWalletConnected, getWalletAddress } from '@/lib/web3';
+import { getWalletAddress } from '@/lib/web3';
 
 export default function Dashboard() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -31,8 +31,8 @@ export default function Dashboard() {
   useEffect(() => {
     const checkWalletConnection = async () => {
       try {
-        if (isWalletConnected()) {
-          const address = await getWalletAddress();
+        const address = await getWalletAddress();
+        if (address) {  // ✅ Proper wallet check
           setWalletAddress(address);
           setIsWeb3Connected(true);
         }
@@ -40,11 +40,6 @@ export default function Dashboard() {
         console.error("Error checking wallet connection:", error);
       }
     };
-    
-    // Only run on client
-    if (typeof window !== 'undefined') {
-      checkWalletConnection();
-    }
   }, []);
 
   return (

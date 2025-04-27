@@ -45,8 +45,8 @@ export default function ShelfLifePage() {
       {/* Search Box */}
       <Card className="mb-8">
         <CardHeader>
-          <CardTitle>Track Medicine Shelf-Life</CardTitle>
-          <CardDescription>Enter the batch number to get real-time shelf-life information</CardDescription>
+          <CardTitle>Track Medicine Bio Stability</CardTitle>
+          <CardDescription>Enter the batch number to get real-time  information</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex gap-2">

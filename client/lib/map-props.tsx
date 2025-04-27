@@ -73,7 +73,7 @@ export const links: LinkProps[] = [
   },
   {
     title: "Receiver",
-    icon: <FileText className="h-full w-full text-white dark:text-white" />,
+    icon: <User className="h-full w-full text-white dark:text-white" />,
     href: "/receiver",
     path: "/receiver",
   },
@@ -89,31 +89,31 @@ export const gridItems: GridItemProps[] = [
   {
     area: "md:[grid-area:1/1/2/7] xl:[grid-area:1/1/2/5]",
     icon: <Box className="h-4 w-4 text-white dark:text-white" />,
-    title: "Do things the right way",
-    description: "Running out of copy so I'll write anything."
+    title: "Step 1: Authentication",
+    description: "User logs in with Google and connects their wallet, updating the UI with login status and wallet address."
   },
   {
     area: "md:[grid-area:1/7/2/13] xl:[grid-area:2/1/3/5]",
     icon: <Settings className="h-4 w-4 text-white dark:text-white" />,
-    title: "The best AI code editor ever.",
-    description: "Yes, it's true. I'm not even kidding. Ask my mom if you don't believe me."
+    title: "Step 2: Shipment Search",
+    description: "User enters a shipment ID and the system retrieves shipment details from Firebase."
   },
   {
     area: "md:[grid-area:2/1/3/7] xl:[grid-area:1/5/3/8]",
     icon: <Lock className="h-4 w-4 text-white dark:text-white" />,
-    title: "You should buy Aceternity UI Pro",
-    description: "It's the best money you'll ever spend"
+    title: "Step 3: Display Info",
+    description: "Shipment details, IPFS hash, and NFT token ID (if minted) are shown, along with document availability."
   },
   {
     area: "md:[grid-area:2/7/3/13] xl:[grid-area:1/8/2/13]",
     icon: <Sparkles className="h-4 w-4 text-white dark:text-white" />,
-    title: "This card is also built by Cursor",
-    description: "I'm not even kidding. Ask my mom if you don't believe me."
+    title: "Step 4: Claim NFT",
+    description: "User clicks create shipment triggering a blockchain transfer and updating Firebase."
   },
   {
     area: "md:[grid-area:3/1/4/13] xl:[grid-area:2/8/3/13]",
     icon: <Search className="h-4 w-4 text-white dark:text-white" />,
-    title: "Coming soon on Aceternity UI",
-    description: "I'm writing the code as I record this, no shit."
+    title: "Step 5: Access & Verify Bio-Stability",
+    description: "User accesses the document on IPFS, and the system analyzes the medicine's bio-stability using blockchain-verified data."
   }
 ];

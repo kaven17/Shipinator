@@ -36,6 +36,7 @@ import {
   uploadBytes,
   getDownloadURL,
 } from "firebase/storage";
+import { getDatabase } from "firebase/database";
 
 // Firebase configuration from environment variables
 const firebaseConfig = {
@@ -59,6 +60,10 @@ const app = !getApps().length
 const auth = getAuth(app);
 const firestore = getFirestore(app);
 const storage = getStorage(app);
+
+export { firebaseConfig };
+// Initialize Database
+export const database = getDatabase(app);
 
 // Authentication Functions
 const signInWithGoogle = async () => {
