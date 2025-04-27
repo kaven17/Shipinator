@@ -6,16 +6,7 @@ import { getAnalytics } from "firebase/analytics";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyDvPWPNW-rIw2lNhLcH3G7sbelESRfWIIU",
-  authDomain: "akatsuki-1.firebaseapp.com",
-  databaseURL: "https://akatsuki-1-default-rtdb.firebaseio.com",
-  projectId: "akatsuki-1",
-  storageBucket: "akatsuki-1.firebasestorage.app",
-  messagingSenderId: "4786939581",
-  appId: "1:4786939581:web:4f400575a28a33dcd2f9d4",
-  measurementId: "G-7BRXQVWRNP"
-};
+firebase config = paste it here
 
 
 // Initialize Firebase
