@@ -157,5 +157,5 @@ Feel free to open issues or PRs! For major changes, please fork the repo and sub
 
 ## 📝 License
 
-MIT © [Your Name / Organization]
+MIT © [KAVEN P.S]
 
